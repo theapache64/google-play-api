@@ -1,0 +1,18 @@
+{
+ "added": [
+  {
+   "id": 1,
+   "type": "implementation",
+   "installed_name": "bouncycastle",
+   "gpm_dep": {
+    "artifact_id": "bcprov-jdk15on",
+    "default_type": "implementation",
+    "docs": "https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk15on",
+    "get_from": "Central",
+    "group_id": "org.bouncycastle",
+    "name": "Bouncy Castle Provider",
+    "description": "The Bouncy Castle Crypto package is a Java implementation of cryptographic algorithms. This jar contains JCE provider and lightweight API for the Bouncy Castle Cryptography APIs for JDK 1.5 and up."
+   }
+  }
+ ]
+}

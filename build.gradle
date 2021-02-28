@@ -1,4 +1,5 @@
 plugins {
+    id 'java'
     id 'org.jetbrains.kotlin.jvm' version '1.4.30'
 }
 
@@ -16,4 +17,9 @@ dependencies {
     implementation 'com.google.protobuf:protobuf-java:3.14.0'
     implementation 'org.apache.httpcomponents:httpclient:4.5.13'
     implementation 'org.apache.httpcomponents:httpcore:4.4.14'
+
+    // Bouncy Castle Provider : The Bouncy Castle Crypto package is a Java implementation of cryptographic algorithms.
+	// This jar contains JCE provider and lightweight API for the Bouncy Castle Cryptography
+	// APIs for JDK 1.5 and up.
+    implementation 'org.bouncycastle:bctls-jdk15on:1.57'
 }
