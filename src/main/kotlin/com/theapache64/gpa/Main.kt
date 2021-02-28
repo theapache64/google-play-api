@@ -1,6 +1,6 @@
 package com.theapache64.gpa
 
-import com.theapache64.gpa.core.Play
+import com.theapache64.gpa.api.Play
 
 fun main(args: Array<String>) {
     val username = System.getenv("GOOGLE_USERNAME")

@@ -1,7 +1,7 @@
-package com.theapache64.gpa.core
+package com.theapache64.gpa.api
 
 import com.akdeniz.googleplaycrawler.GooglePlayAPI
-import de.onyxbits.raccoon.net.DroidConnectionSocketFactory
+import com.theapache64.gpa.core.net.DroidConnectionSocketFactory
 import org.apache.http.client.HttpClient
 import org.apache.http.client.config.RequestConfig
 import org.apache.http.config.RegistryBuilder
