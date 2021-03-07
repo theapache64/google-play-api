@@ -13,6 +13,48 @@
     "name": "Bouncy Castle Provider",
     "description": "The Bouncy Castle Crypto package is a Java implementation of cryptographic algorithms. This jar contains JCE provider and lightweight API for the Bouncy Castle Cryptography APIs for JDK 1.5 and up."
    }
+  },
+  {
+   "id": 2,
+   "type": "implementation",
+   "installed_name": "junit",
+   "gpm_dep": {
+    "artifact_id": "junit",
+    "default_type": "implementation",
+    "docs": "https://mvnrepository.com/artifact/junit/junit",
+    "get_from": "Central",
+    "group_id": "junit",
+    "name": "JUnit",
+    "description": "JUnit is a unit testing framework for Java, created by Erich Gamma and Kent Beck."
+   }
+  },
+  {
+   "id": 3,
+   "type": "implementation",
+   "installed_name": "coroutines-core",
+   "gpm_dep": {
+    "artifact_id": "kotlinx-coroutines-core",
+    "default_type": "implementation",
+    "docs": "https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-core",
+    "get_from": "Central",
+    "group_id": "org.jetbrains.kotlinx",
+    "name": "Kotlinx Coroutines Core",
+    "description": "Coroutines support libraries for Kotlin"
+   }
+  },
+  {
+   "id": 4,
+   "type": "testImplementation",
+   "installed_name": "expekt",
+   "gpm_dep": {
+    "artifact_id": "expekt",
+    "default_type": "implementation",
+    "docs": "https://mvnrepository.com/artifact/com.theapache64/expekt",
+    "get_from": "JCenter",
+    "group_id": "com.theapache64",
+    "name": "Expekt",
+    "description": "An assertion library for Kotlin"
+   }
   }
  ]
 }
