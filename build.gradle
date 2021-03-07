@@ -11,6 +11,10 @@ repositories {
     mavenCentral()
 }
 
+test {
+    useJUnitPlatform()
+}
+
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
 
@@ -24,11 +28,9 @@ dependencies {
 	// APIs for JDK 1.5 and up.
     implementation 'org.bouncycastle:bctls-jdk15on:1.57'
 
-    // JUnit : JUnit is a unit testing framework for Java, created by Erich Gamma and Kent Beck.
-    testImplementation 'junit:junit:4.13.2'
-
     // Kotlinx Coroutines Core : Coroutines support libraries for Kotlin
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.3'
+    implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
 
     // Expekt : An assertion library for Kotlin
     testImplementation 'com.theapache64:expekt:0.0.1'
