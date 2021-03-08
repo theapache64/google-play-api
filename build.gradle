@@ -13,7 +13,10 @@ repositories {
 
 test {
     useJUnitPlatform()
+    environment("PLAY_API_GOOGLE_USERNAME", System.getenv("PLAY_API_GOOGLE_USERNAME"))
+    environment("PLAY_API_GOOGLE_PASSWORD", System.getenv("PLAY_API_GOOGLE_PASSWORD"))
 }
+
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
@@ -35,3 +38,5 @@ dependencies {
     // Expekt : An assertion library for Kotlin
     testImplementation 'com.theapache64:expekt:0.0.1'
 }
+
+
