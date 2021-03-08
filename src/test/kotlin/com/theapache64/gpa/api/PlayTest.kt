@@ -5,6 +5,7 @@ import com.akdeniz.googleplaycrawler.GooglePlayException
 import com.theapache64.expekt.should
 import com.theapache64.gpa.model.Account
 import com.theapache64.gpa.utils.runBlockingTest
+import kotlinx.coroutines.delay
 import org.apache.http.client.ClientProtocolException
 import org.junit.jupiter.api.BeforeAll
 import org.junit.jupiter.api.Test
@@ -26,6 +27,7 @@ internal class PlayTest {
 
         val account = Play.login(username, password)
         account.should.not.`null`
+        delay(3000) // wait to sync the id in google's blood
         api = Play.getApi(account)
     }
 
