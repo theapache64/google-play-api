@@ -23,4 +23,8 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
+      env:
+        PLAY_API_GOOGLE_USERNAME: ${{ secrets.PLAY_API_GOOGLE_USERNAME }}
+        PLAY_API_GOOGLE_PASSWORD: ${{ secrets.PLAY_API_GOOGLE_PASSWORD }}
       run: ./gradlew build
+
