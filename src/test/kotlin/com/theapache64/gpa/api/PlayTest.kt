@@ -3,7 +3,6 @@ package com.theapache64.gpa.api
 import com.akdeniz.googleplaycrawler.GooglePlayAPI
 import com.akdeniz.googleplaycrawler.GooglePlayException
 import com.theapache64.expekt.should
-import com.theapache64.gpa.model.Account
 import com.theapache64.gpa.utils.runBlockingTest
 import kotlinx.coroutines.delay
 import org.apache.http.client.ClientProtocolException
@@ -26,6 +25,7 @@ internal class PlayTest {
         val password = System.getenv("PLAY_API_GOOGLE_PASSWORD")!!
 
         val account = Play.login(username, password)
+        // val account = testAccount
         account.should.not.`null`
         delay(3000) // wait to sync the id in google's blood
         api = Play.getApi(account)
@@ -61,19 +61,19 @@ internal class PlayTest {
 
     @Test
     fun givenValidSmallPackageName_whenDownload_thenSuccess() {
-        downloadApk("a.i")
+        downloadApkAndTest("a.i")
     }
 
     @Test
     fun givenValidMediumPackageName_whenDownload_thenSuccess() {
-        downloadApk("com.theapache64.papercop")
+        downloadApkAndTest("com.theapache64.papercop")
     }
 
 
     /**
      * To download APK
      */
-    private fun downloadApk(packageName: String) {
+    private fun downloadApkAndTest(packageName: String) {
         val apkFile = File("$packageName.apk")
         val details = api.details(packageName)
         val downloadData = api.purchaseAndDeliver(
@@ -91,5 +91,4 @@ internal class PlayTest {
         apkFile.length().should.equal(downloadData.totalSize)
         apkFile.delete() // test finished, so deleting downloaded file
     }
-
 }
