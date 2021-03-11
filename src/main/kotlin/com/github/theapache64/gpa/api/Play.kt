@@ -1,7 +1,7 @@
-package com.theapache64.gpa.api
+package com.github.theapache64.gpa.api
 
 import com.akdeniz.googleplaycrawler.GooglePlayAPI
-import com.theapache64.gpa.model.Account
+import com.github.theapache64.gpa.model.Account
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

@@ -1,10 +1,11 @@
-package com.theapache64.gpa.api
+package com.github.theapache64.gpa.api
 
 import com.akdeniz.googleplaycrawler.GooglePlayAPI
 import com.akdeniz.googleplaycrawler.GooglePlayException
+import com.github.theapache64.gpa.api.Play
 import com.theapache64.expekt.should
-import com.theapache64.gpa.utils.runBlockingTest
-import com.theapache64.gpa.utils.testAccount
+import com.github.theapache64.gpa.utils.runBlockingTest
+import com.github.theapache64.gpa.utils.testAccount
 import kotlinx.coroutines.delay
 import org.apache.http.client.ClientProtocolException
 import org.junit.jupiter.api.BeforeAll
@@ -62,9 +63,7 @@ internal class PlayTest {
 
     @Test
     fun given() {
-        api.search("Music").let {
 
-        }
     }
 
     @Test

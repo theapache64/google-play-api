@@ -1,4 +1,4 @@
-package com.theapache64.gpa.model
+package com.github.theapache64.gpa.model
 
 data class Account(
     val username: String,

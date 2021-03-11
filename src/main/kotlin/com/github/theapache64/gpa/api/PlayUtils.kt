@@ -1,6 +1,6 @@
-package com.theapache64.gpa.api
+package com.github.theapache64.gpa.api
 
-import com.theapache64.gpa.core.net.DroidConnectionSocketFactory
+import com.github.theapache64.gpa.core.net.DroidConnectionSocketFactory
 import org.apache.http.client.HttpClient
 import org.apache.http.client.config.RequestConfig
 import org.apache.http.config.RegistryBuilder

@@ -1,4 +1,4 @@
-package com.theapache64.gpa.core.net
+package com.github.theapache64.gpa.core.net
 
 import java.util.*
 

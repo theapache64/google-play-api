@@ -1,11 +1,11 @@
-package com.theapache64.gpa.core
+package com.github.theapache64.gpa.core
 
 import com.akdeniz.googleplaycrawler.GooglePlay.DocV2
 import com.akdeniz.googleplaycrawler.GooglePlay
-import com.theapache64.gpa.core.Unwrap
+import com.github.theapache64.gpa.core.Unwrap
 import com.akdeniz.googleplaycrawler.GooglePlay.PreFetch
 import com.google.protobuf.InvalidProtocolBufferException
-import com.theapache64.gpa.core.SearchEngineResultPage
+import com.github.theapache64.gpa.core.SearchEngineResultPage
 import java.util.ArrayList
 
 /**

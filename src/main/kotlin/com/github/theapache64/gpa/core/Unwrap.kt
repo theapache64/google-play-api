@@ -1,9 +1,9 @@
-package com.theapache64.gpa.core
+package com.github.theapache64.gpa.core
 
 import com.akdeniz.googleplaycrawler.GooglePlay
 import com.akdeniz.googleplaycrawler.GooglePlay.Payload
 import com.akdeniz.googleplaycrawler.GooglePlay.SearchResponse
-import com.theapache64.gpa.core.Unwrap
+import com.github.theapache64.gpa.core.Unwrap
 import com.akdeniz.googleplaycrawler.GooglePlay.ListResponse
 import com.akdeniz.googleplaycrawler.GooglePlay.DeliveryResponse
 import com.akdeniz.googleplaycrawler.GooglePlay.BulkDetailsResponse

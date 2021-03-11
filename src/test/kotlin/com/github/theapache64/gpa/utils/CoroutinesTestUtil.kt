@@ -1,4 +1,4 @@
-package com.theapache64.gpa.utils
+package com.github.theapache64.gpa.utils
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.runBlocking
