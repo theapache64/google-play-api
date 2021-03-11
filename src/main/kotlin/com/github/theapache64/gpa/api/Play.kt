@@ -1,6 +1,8 @@
 package com.github.theapache64.gpa.api
 
+import com.akdeniz.googleplaycrawler.GooglePlay
 import com.akdeniz.googleplaycrawler.GooglePlayAPI
+import com.github.theapache64.gpa.core.SearchEngineResultPage
 import com.github.theapache64.gpa.model.Account
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -55,6 +57,12 @@ object Play {
             localization = account.locale
             token = account.token
         }
+    }
+
+    fun search(query: String, api: GooglePlayAPI): List<GooglePlay.DocV2> {
+        val serp = SearchEngineResultPage(SearchEngineResultPage.SEARCH)
+        serp.append(api.searchApp(query))
+        return serp.content
     }
 
 

@@ -2,10 +2,11 @@ package com.github.theapache64.gpa.api
 
 import com.akdeniz.googleplaycrawler.GooglePlayAPI
 import com.akdeniz.googleplaycrawler.GooglePlayException
-import com.github.theapache64.gpa.api.Play
-import com.theapache64.expekt.should
+import com.github.theapache64.gpa.core.SearchEngineResultPage
+import com.github.theapache64.gpa.model.Account
 import com.github.theapache64.gpa.utils.runBlockingTest
 import com.github.theapache64.gpa.utils.testAccount
+import com.theapache64.expekt.should
 import kotlinx.coroutines.delay
 import org.apache.http.client.ClientProtocolException
 import org.junit.jupiter.api.BeforeAll
@@ -61,9 +62,13 @@ internal class PlayTest {
         }
     }
 
+    /**
+     * Search test
+     */
     @Test
-    fun given() {
-
+    fun givenValidKeyword_whenSearch_thenSuccess() {
+        val searchResult = Play.search("WhatsApp", api)
+        searchResult.size.should.equal(15)
     }
 
     @Test
