@@ -63,25 +63,28 @@ object Play {
         api: GooglePlayAPI,
         _serp: SearchEngineResultPage? = null
     ): SearchEngineResultPage {
+
         var serp = _serp
-        var tmp: String? = null
+        var nextPageUrl: String? = null
 
         if (serp != null) {
-            tmp = serp.nextPageUrl
+            // second+ time
+            nextPageUrl = serp.nextPageUrl
         }
+
         if (serp == null) {
             serp = SearchEngineResultPage(SearchEngineResultPage.SEARCH)
         }
 
         serp.append(api.searchApp(query))
 
-        if (tmp == null) {
-            tmp = serp.nextPageUrl
+        if (nextPageUrl == null) {
+            // first time
+            nextPageUrl = serp.nextPageUrl
         }
 
-
-        if (tmp != null && "" != tmp) {
-            serp.append(api.getList(tmp))
+        if (nextPageUrl?.isNotBlank() == true) {
+            serp.append(api.getList(nextPageUrl))
         }
 
         return serp

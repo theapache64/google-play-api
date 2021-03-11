@@ -69,6 +69,7 @@ internal class PlayTest {
         var serp = Play.search(keyword, api)
 
         repeat(10) {
+            println("Size -> ${serp.content.size}")
             serp = Play.search(keyword, api, serp)
         }
 
