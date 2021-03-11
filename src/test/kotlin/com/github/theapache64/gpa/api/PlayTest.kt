@@ -2,8 +2,6 @@ package com.github.theapache64.gpa.api
 
 import com.akdeniz.googleplaycrawler.GooglePlayAPI
 import com.akdeniz.googleplaycrawler.GooglePlayException
-import com.github.theapache64.gpa.core.SearchEngineResultPage
-import com.github.theapache64.gpa.model.Account
 import com.github.theapache64.gpa.utils.runBlockingTest
 import com.github.theapache64.gpa.utils.testAccount
 import com.theapache64.expekt.should
@@ -67,8 +65,47 @@ internal class PlayTest {
      */
     @Test
     fun givenValidKeyword_whenSearch_thenSuccess() {
-        val searchResult = Play.search("WhatsApp", api)
-        searchResult.size.should.equal(15)
+        val keyword = "WhatsApp"
+        var serp = Play.search(keyword, api)
+        // serp.content.size.should.equal(35)
+
+        println(serp.content.size)
+        println("######")
+        serp = Play.search(keyword, api, serp)
+        println(serp.content.size)
+        println("######")
+        serp = Play.search(keyword, api, serp)
+        println(serp.content.size)
+        println("######")
+        serp = Play.search(keyword, api, serp)
+        println(serp.content.size)
+        println("######")
+        serp = Play.search(keyword, api, serp)
+        println(serp.content.size)
+        println("######")
+        serp = Play.search(keyword, api, serp)
+        println(serp.content.size)
+        println("######")
+        serp = Play.search(keyword, api, serp)
+        println(serp.content.size)
+        println("######")
+        serp = Play.search(keyword, api, serp)
+        println(serp.content.size)
+        println("######")
+        serp = Play.search(keyword, api, serp)
+        println(serp.content.size)
+        println("######")
+        serp = Play.search(keyword, api, serp)
+        println(serp.content.size)
+        println("######")
+        serp = Play.search(keyword, api, serp)
+        println(serp.content.size)
+        println("######")
+        serp = Play.search(keyword, api, serp)
+        println(serp.content.size)
+        println("######")
+        serp = Play.search(keyword, api, serp)
+        println(serp.content.size)
     }
 
     @Test

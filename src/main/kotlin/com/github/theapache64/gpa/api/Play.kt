@@ -1,6 +1,5 @@
 package com.github.theapache64.gpa.api
 
-import com.akdeniz.googleplaycrawler.GooglePlay
 import com.akdeniz.googleplaycrawler.GooglePlayAPI
 import com.github.theapache64.gpa.core.SearchEngineResultPage
 import com.github.theapache64.gpa.model.Account
@@ -59,10 +58,31 @@ object Play {
         }
     }
 
-    fun search(query: String, api: GooglePlayAPI): List<GooglePlay.DocV2> {
-        val serp = SearchEngineResultPage(SearchEngineResultPage.SEARCH)
+    fun search(
+        query: String,
+        api: GooglePlayAPI,
+        _serp: SearchEngineResultPage? = null
+    ): SearchEngineResultPage {
+        var serp = _serp
+        var tmp: String? = null
+        if (serp != null) {
+            // tmp = serp.nextPageUrl
+        }
+        if (serp == null) {
+            serp = SearchEngineResultPage(SearchEngineResultPage.SEARCH)
+        }
+
+        if (tmp == null) {
+            // tmp = serp.nextPageUrl
+        }
+
         serp.append(api.searchApp(query))
-        return serp.content
+
+        if (tmp != null && "" != tmp) {
+            serp.append(api.getList(tmp))
+        }
+
+        return serp
     }
 
 
