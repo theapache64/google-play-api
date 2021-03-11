@@ -60,8 +60,17 @@ internal class PlayTest {
         }
     }
 
+    @Test
+    fun givenValidKeyword_whenSearch_thenSuccess() {
+        val keyword = "WhatsApp"
+        var serp = Play.search(keyword, api)
+        serp.content.size.should.equal(35) // first page
+        serp = Play.search(keyword, api, serp)
+        serp.content.size.should.equal(70) // first page + second page
+    }
+
     /**
-     * Search test
+     * Search test with pagination
      */
     @Test
     fun givenValidKeyword_whenSearch_thenSuccessWithPagination() {
