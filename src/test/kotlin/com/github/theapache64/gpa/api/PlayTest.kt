@@ -64,24 +64,16 @@ internal class PlayTest {
      * Search test
      */
     @Test
-    fun givenValidKeyword_whenSearch_thenSuccess() {
+    fun givenValidKeyword_whenSearch_thenSuccessWithPagination() {
         val keyword = "WhatsApp"
         var serp = Play.search(keyword, api)
 
         repeat(10) {
-            println("Size -> ${serp.content.size}")
+            // Loading 10 pages
             serp = Play.search(keyword, api, serp)
         }
 
-        println("**********************")
-        val file = File("build/test_output/${System.currentTimeMillis()}.txt")
-        file.parentFile.mkdirs()
-        file.createNewFile()
-        serp.content.forEach {
-            file.appendText(
-                "${it.docid}\n"
-            )
-        }
+        serp.content.size.should.above(300)
     }
 
     @Test
