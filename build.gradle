@@ -1,10 +1,12 @@
 plugins {
     id 'java'
+    id 'maven'
+    id 'maven-publish'
     id 'org.jetbrains.kotlin.jvm' version '1.4.30'
 }
 
-group 'com.theapache64'
-version '0.0.1'
+group 'com.github.theapache64'
+version '0.0.2'
 
 repositories {
     jcenter()
@@ -37,6 +39,67 @@ dependencies {
 
     // Expekt : An assertion library for Kotlin
     testImplementation 'com.theapache64:expekt:0.0.1'
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    archiveClassifier.set('sources')
+    from sourceSets.main.allSource
+}
+
+javadoc.failOnError = false
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    archiveClassifier.set('javadoc')
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}
+
+def pomConfig = {
+    licenses {
+        license {
+            name "The Apache Software License, Version 2.0"
+            url "http://www.apache.org/licenses/LICENSE-2.0.txt"
+            distribution "repo"
+        }
+    }
+    developers {
+        developer {
+            id "shifarshifz"
+            name "shifarshifz"
+            email "theapache64@gmail.com"
+        }
+    }
+
+    scm {
+        url "https://github.com/theapache64/google-play-api"
+    }
+}
+
+publishing {
+    publications {
+        mavenPublication(MavenPublication) {
+            from components.java
+            artifact sourcesJar {
+                classifier "sources"
+            }
+            artifact javadocJar {
+                classifier "javadoc"
+            }
+            groupId 'com.github.theapache64'
+            artifactId 'google-play-api'
+            version "$version"
+            pom.withXml {
+                def root = asNode()
+                root.appendNode('description', 'To access play store')
+                root.appendNode('name', 'google-play-api')
+                root.appendNode('url', 'https://github.com/theapache64/google-play-api')
+                root.children().last() + pomConfig
+            }
+        }
+    }
 }
 
 
