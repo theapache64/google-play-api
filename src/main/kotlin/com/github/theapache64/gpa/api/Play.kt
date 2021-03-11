@@ -58,11 +58,11 @@ object Play {
         }
     }
 
-    fun search(
+    suspend fun search(
         query: String,
         api: GooglePlayAPI,
         _serp: SearchEngineResultPage? = null
-    ): SearchEngineResultPage {
+    ): SearchEngineResultPage = withContext(Dispatchers.IO) {
 
         var serp = _serp
         var nextPageUrl: String? = null
@@ -87,7 +87,7 @@ object Play {
             serp.append(api.getList(nextPageUrl))
         }
 
-        return serp
+        serp
     }
 
 

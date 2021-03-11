@@ -60,7 +60,7 @@ internal class PlayTest {
     }
 
     @Test
-    fun givenValidKeyword_whenSearch_thenSuccess() {
+    fun givenValidKeyword_whenSearch_thenSuccess() = runBlockingTest {
         val keyword = "WhatsApp"
         var serp = Play.search(keyword, api)
         serp.content.size.should.equal(35) // first page
@@ -72,7 +72,7 @@ internal class PlayTest {
      * Search test with pagination
      */
     @Test
-    fun givenValidKeyword_whenSearch_thenSuccessWithPagination() {
+    fun givenValidKeyword_whenSearch_thenSuccessWithPagination() = runBlockingTest {
         val keyword = "WhatsApp"
         var serp = Play.search(keyword, api)
 
