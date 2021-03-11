@@ -3,7 +3,6 @@ package com.github.theapache64.gpa.api
 import com.akdeniz.googleplaycrawler.GooglePlayAPI
 import com.akdeniz.googleplaycrawler.GooglePlayException
 import com.github.theapache64.gpa.utils.runBlockingTest
-import com.github.theapache64.gpa.utils.testAccount
 import com.theapache64.expekt.should
 import kotlinx.coroutines.delay
 import org.apache.http.client.ClientProtocolException
@@ -25,8 +24,8 @@ internal class PlayTest {
         val username = System.getenv("PLAY_API_GOOGLE_USERNAME")!!
         val password = System.getenv("PLAY_API_GOOGLE_PASSWORD")!!
 
-        //val account = Play.login(username, password)
-        val account = testAccount
+        val account = Play.login(username, password)
+        // val account = testAccount
         account.should.not.`null`
         delay(3000) // wait to sync the id in google's blood
         api = Play.getApi(account)
