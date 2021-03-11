@@ -67,45 +67,20 @@ internal class PlayTest {
     fun givenValidKeyword_whenSearch_thenSuccess() {
         val keyword = "WhatsApp"
         var serp = Play.search(keyword, api)
-        // serp.content.size.should.equal(35)
 
-        println(serp.content.size)
-        println("######")
-        serp = Play.search(keyword, api, serp)
-        println(serp.content.size)
-        println("######")
-        serp = Play.search(keyword, api, serp)
-        println(serp.content.size)
-        println("######")
-        serp = Play.search(keyword, api, serp)
-        println(serp.content.size)
-        println("######")
-        serp = Play.search(keyword, api, serp)
-        println(serp.content.size)
-        println("######")
-        serp = Play.search(keyword, api, serp)
-        println(serp.content.size)
-        println("######")
-        serp = Play.search(keyword, api, serp)
-        println(serp.content.size)
-        println("######")
-        serp = Play.search(keyword, api, serp)
-        println(serp.content.size)
-        println("######")
-        serp = Play.search(keyword, api, serp)
-        println(serp.content.size)
-        println("######")
-        serp = Play.search(keyword, api, serp)
-        println(serp.content.size)
-        println("######")
-        serp = Play.search(keyword, api, serp)
-        println(serp.content.size)
-        println("######")
-        serp = Play.search(keyword, api, serp)
-        println(serp.content.size)
-        println("######")
-        serp = Play.search(keyword, api, serp)
-        println(serp.content.size)
+        repeat(10) {
+            serp = Play.search(keyword, api, serp)
+        }
+
+        println("**********************")
+        val file = File("build/test_output/${System.currentTimeMillis()}.txt")
+        file.parentFile.mkdirs()
+        file.createNewFile()
+        serp.content.forEach {
+            file.appendText(
+                "${it.docid}\n"
+            )
+        }
     }
 
     @Test
