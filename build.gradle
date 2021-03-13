@@ -6,7 +6,7 @@ plugins {
 }
 
 group 'com.github.theapache64'
-version '0.0.4'
+version '0.0.5'
 
 repositories {
     jcenter()
@@ -24,7 +24,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib"
 
     // Akdeniz Deps
-    api 'com.google.protobuf:protobuf-java:3.14.0'
+    implementation 'com.google.protobuf:protobuf-java:3.14.0'
     implementation 'org.apache.httpcomponents:httpclient:4.5.13'
     implementation 'org.apache.httpcomponents:httpcore:4.4.14'
 

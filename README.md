@@ -18,6 +18,7 @@ repositories {
 }
 
 dependencies {
+   implementation("com.google.protobuf:protobuf-java:3.14.0")
    implementation("com.github.theapache64:google-play-api:latest.version")
 }
 ```
