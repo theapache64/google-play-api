@@ -94,6 +94,17 @@ internal class PlayTest {
         downloadApkAndTest("com.theapache64.papercop")
     }
 
+    @Test
+    fun `Download API level restricted app`() {
+        val packageName = "com.truecaller"
+        val downloadData = api.purchaseAndDeliver(
+            packageName,
+            1153006,
+            1,
+        )
+        println(downloadData)
+    }
+
 
     /**
      * To download APK
@@ -101,9 +112,10 @@ internal class PlayTest {
     private fun downloadApkAndTest(packageName: String) {
         val apkFile = File("$packageName.apk")
         val details = api.details(packageName)
+        val versionCode = details.docV2.details.appDetails.versionCode
         val downloadData = api.purchaseAndDeliver(
             packageName,
-            details.docV2.details.appDetails.versionCode,
+            versionCode,
             1,
         )
         downloadData.openApp().use { input ->
@@ -113,7 +125,6 @@ internal class PlayTest {
         }
 
         apkFile.exists().should.`true`
-        apkFile.length().should.equal(downloadData.totalSize)
         apkFile.delete() // test finished, so deleting downloaded file
     }
 }

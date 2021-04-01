@@ -5,5 +5,5 @@ data class Account(
     val password: String,
     val token: String,
     val gsfId: String,
-    val locale: String
+    val locale: String,
 )

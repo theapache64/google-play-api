@@ -18,7 +18,7 @@ object Play {
         username: String,
         password: String,
         locale: String = PlayUtils.getLocalization(),
-        dispatcher: CoroutineDispatcher = Dispatchers.IO
+        dispatcher: CoroutineDispatcher = Dispatchers.IO,
     ): Account = withContext(dispatcher) {
 
         // Building GooglePlayAPI
@@ -38,6 +38,9 @@ object Play {
         // To get GSF id
         api.checkin()
 
+        // Upload device config
+        api.uploadDeviceConfig()
+
         Account(
             username,
             password,
@@ -50,18 +53,19 @@ object Play {
     fun getApi(account: Account): GooglePlayAPI {
         return GooglePlayAPI(
             account.username,
-            account.password,
-            account.gsfId
+            account.password
         ).apply {
-            localization = account.locale
+            useragent = USER_AGENT
+            androidID = account.gsfId
             token = account.token
+            localization = account.locale
         }
     }
 
     suspend fun search(
         query: String,
         api: GooglePlayAPI,
-        _serp: SearchEngineResultPage? = null
+        _serp: SearchEngineResultPage? = null,
     ): SearchEngineResultPage = withContext(Dispatchers.IO) {
 
         var serp = _serp
