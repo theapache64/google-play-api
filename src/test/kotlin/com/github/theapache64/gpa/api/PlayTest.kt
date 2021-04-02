@@ -27,8 +27,9 @@ internal class PlayTest {
         val account = Play.login(username, password)
         // val account = testAccount
         account.should.not.`null`
-        delay(3000) // wait to sync the id in google's blood
         api = Play.getApi(account)
+        println("Waiting for 30 seconds...")
+        delay(10000) // wait to sync the id in google's blood
     }
 
     @Test
