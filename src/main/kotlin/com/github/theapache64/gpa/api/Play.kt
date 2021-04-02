@@ -5,6 +5,7 @@ import com.github.theapache64.gpa.core.SearchEngineResultPage
 import com.github.theapache64.gpa.model.Account
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 
 object Play {
@@ -19,6 +20,7 @@ object Play {
         password: String,
         locale: String = PlayUtils.getLocalization(),
         dispatcher: CoroutineDispatcher = Dispatchers.IO,
+        loginDelay: Long = 10_000,
     ): Account = withContext(dispatcher) {
 
         // Building GooglePlayAPI
@@ -40,6 +42,9 @@ object Play {
 
         // Upload device config
         api.uploadDeviceConfig()
+
+        // giving time to sync the device config in google servers.
+        delay(loginDelay)
 
         Account(
             username,
