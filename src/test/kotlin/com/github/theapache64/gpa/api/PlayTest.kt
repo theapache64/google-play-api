@@ -61,9 +61,9 @@ internal class PlayTest {
     fun givenValidKeyword_whenSearch_thenSuccess() = runBlockingTest {
         val keyword = "WhatsApp"
         var serp = Play.search(keyword, api)
-        serp.content.size.should.equal(35) // first page
+        serp.content.size.should.equal(34) // first page
         serp = Play.search(keyword, api, serp)
-        serp.content.size.should.equal(70) // first page + second page
+        serp.content.size.should.equal(68) // first page + second page
     }
 
     /**

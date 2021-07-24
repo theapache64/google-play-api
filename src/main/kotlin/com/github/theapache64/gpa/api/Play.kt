@@ -21,6 +21,7 @@ object Play {
         locale: String = PlayUtils.getLocalization(),
         dispatcher: CoroutineDispatcher = Dispatchers.IO,
         loginDelay: Long = 10_000,
+        sdkVersion: Int = 17
     ): Account = withContext(dispatcher) {
 
         // Building GooglePlayAPI
@@ -35,7 +36,7 @@ object Play {
 
 
         // Requesting for login
-        api.login()
+        api.login(sdkVersion)
 
         // To get GSF id
         api.checkin()
