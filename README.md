@@ -89,10 +89,6 @@ Give a ⭐️ if this project helped you!
     <img src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" alt="Donation" width="160">
 </a>
 
-## ☑️ TODO
-
-- [ ] Task 1
-
 ## 📝 License
 
 ```
