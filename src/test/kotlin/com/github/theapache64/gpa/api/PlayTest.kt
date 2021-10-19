@@ -47,6 +47,13 @@ internal class PlayTest {
     }
 
     @Test
+    fun givenValidPackageName_whenGetPackageDetails_thenSuccess2() {
+        val packageName = "com.meesho.supply"
+        val details = api.details(packageName)
+        println(details.docV2)
+    }
+
+    @Test
     fun givenInvalidPackageName_whenGetPackageDetails_thenError() {
         val packageName = ""
         try {

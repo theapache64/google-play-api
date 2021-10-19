@@ -36,7 +36,7 @@ object Play {
 
 
         // Requesting for login
-        api.login(sdkVersion)
+        api.login()
 
         // To get GSF id
         api.checkin()
