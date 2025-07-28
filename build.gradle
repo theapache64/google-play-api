@@ -9,8 +9,11 @@ group 'com.github.theapache64'
 version '0.0.9'
 
 repositories {
-    jcenter()
     mavenCentral()
+    // Jitpack
+    maven {
+        url "https://jitpack.io"
+    }
 }
 
 test {
@@ -38,7 +41,7 @@ dependencies {
     implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
 
     // Expekt : An assertion library for Kotlin
-    testImplementation 'com.theapache64:expekt:0.0.1'
+    testImplementation 'com.github.theapache64:expekt:1.0.0'
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {

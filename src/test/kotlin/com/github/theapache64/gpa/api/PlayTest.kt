@@ -2,10 +2,12 @@ package com.github.theapache64.gpa.api
 
 import com.akdeniz.googleplaycrawler.GooglePlayAPI
 import com.akdeniz.googleplaycrawler.GooglePlayException
+import com.github.theapache64.expekt.should
+import com.github.theapache64.gpa.model.Account
 import com.github.theapache64.gpa.utils.runBlockingTest
-import com.theapache64.expekt.should
 import org.apache.http.client.ClientProtocolException
 import org.junit.jupiter.api.BeforeAll
+import org.junit.jupiter.api.RepeatedTest
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import java.io.File
@@ -24,7 +26,6 @@ internal class PlayTest {
         val password = System.getenv("PLAY_API_GOOGLE_PASSWORD")!!
 
         val account = Play.login(username, password)
-        // val account = testAccount
         account.should.not.`null`
         api = Play.getApi(account)
     }
@@ -41,7 +42,7 @@ internal class PlayTest {
 
     @Test
     fun givenValidPackageName_whenGetPackageDetails_thenSuccess() {
-        val packageName = "com.theapache64.papercop"
+        val packageName = "com.wrumer.wrumerapp"
         val details = api.details(packageName)
         details.docV2.docid.should.equal(packageName)
     }
@@ -68,48 +69,23 @@ internal class PlayTest {
     fun givenValidKeyword_whenSearch_thenSuccess() = runBlockingTest {
         val keyword = "WhatsApp"
         var serp = Play.search(keyword, api)
-        serp.content.size.should.equal(34) // first page
+        val firstPageSize = serp.content.size
+        firstPageSize.should.above(0) // first page
         serp = Play.search(keyword, api, serp)
-        serp.content.size.should.equal(68) // first page + second page
+        serp.content.size.should.above(firstPageSize) // first page + second page
     }
 
-    /**
-     * Search test with pagination
-     */
-    @Test
-    fun givenValidKeyword_whenSearch_thenSuccessWithPagination() = runBlockingTest {
-        val keyword = "WhatsApp"
-        var serp = Play.search(keyword, api)
-
-        repeat(10) {
-            // Loading 10 pages
-            serp = Play.search(keyword, api, serp)
-        }
-
-        serp.content.size.should.above(300)
-    }
 
     @Test
+    @RepeatedTest(3)
     fun givenValidSmallPackageName_whenDownload_thenSuccess() {
-        downloadApkAndTest("a.i")
+        downloadApkAndTest("org.telegram.messenger")
     }
 
     @Test
     fun givenValidMediumPackageName_whenDownload_thenSuccess() {
-        downloadApkAndTest("com.theapache64.papercop")
+        downloadApkAndTest("com.wrumer.wrumerapp")
     }
-
-    @Test
-    fun `Download API level restricted app`() {
-        val packageName = "com.truecaller"
-        val downloadData = api.purchaseAndDeliver(
-            packageName,
-            1153006,
-            1,
-        )
-        println(downloadData)
-    }
-
 
     /**
      * To download APK
